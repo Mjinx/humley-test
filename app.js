@@ -15,6 +15,7 @@ app.use(express.static(__dirname + '/public'));
 ////API Routes Config////
 var apiRouter = express.Router(); 
 apiRouter.use(function(req, res, next) {//Middleware
+  //TODO get the credentials from env varibles.
   natural_language_classifier = natural_language_classifier || watson.natural_language_classifier({
     url: 'https://gateway.watsonplatform.net/natural-language-classifier/api',
     username: 'ae641e65-28bc-4835-a14e-7fa6cc104981',
