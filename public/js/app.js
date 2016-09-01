@@ -1,5 +1,5 @@
 (function(){
     "use strict";
 
-    var module = angular.module("humleyTest",['ngRoute']);
+    var module = angular.module("humleyTest",[]);
 })();
