@@ -16,12 +16,13 @@ var cfenv = require('cfenv');
 var app = express();
 
 // serve the files out of ./public as our main files
+app.use('/scripts', express.static(__dirname + '/node_modules/'));
 app.use(express.static(__dirname + '/public'));
 
 // get the app environment from Cloud Foundry
 var appEnv = cfenv.getAppEnv();
 
-console.log(appEnv);
+//console.log(appEnv);
 
 // start server on the specified port and binding host
 app.listen(1337, '0.0.0.0', function() {

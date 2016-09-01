@@ -1,6 +1,9 @@
 /* style.css
  * This file provides css styles.
  */
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+  display: none !important;
+}
 
 body,html {
 	background-color: #3b4b54; width : 100%;
