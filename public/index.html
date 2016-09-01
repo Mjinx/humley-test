@@ -1,32 +1,29 @@
 <!DOCTYPE html>
 <html ng-app="humleyTest">
-
   <head>
-    <title>NodeJS Starter Application</title>
+    <title>Humley Test</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-<meta name = "viewport" content = "user-scalable=no, width=device-width">
     <link rel="stylesheet" href="css/style.css">
   </head>
 
   <body ng-controller="watsonCtrl" ng-cloak>
-<div class="well">
-    <form name="askWatson">
-      <input type="search" placeholder="Ask Watson a question" ng-model="question">
-      <input type="submit" value="Ask..." ng-click="ask(question)">
-    </form>
-      <input type="button" value="Check Watson" ng-click="checkStatus()">
-
-    <pre>{{answer|json}}</pre>
-    <pre>{{repo|json}}</pre>
-    <pre>{{error|json}}</pre>
-</div>
+    <h2 class="title">Moe's interview bot</h2>
+    <div class="well">
+      <form name="askWatson">
+        <input type="search" required placeholder="Ask Watson a question" ng-model="question">
+        <input type="submit" value="Ask..." ng-disabled="askWatson.$invalid" ng-click="ask(question)">
+        <input type="button" value="Check Watson" ng-click="checkStatus()">
+      </form>
+      <pre>{{message|json}}</pre>
+    </div>
   </body>
+
   <script src="scripts/angular/angular.js"></script>
   <script src="scripts/angular-route/angular-route.js"></script>
   <script src="js/app.js"></script>
   <script src="js/ctrl/watsonCtrl.js"></script>
   <script src="js/srv/watson.js"></script>
+  
 </html>
