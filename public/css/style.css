@@ -37,6 +37,9 @@ h1 {
 	font-size: 2em;
 }
 
+input, select {
+	width: 100%;
+}
 
 .blue {
 	color: #00aed1;

@@ -79,14 +79,11 @@ apiRouter.route('/classifiers')//GET
         res.send(err);
       else{
         var resp = response.classifiers.map(function(c){
-
           return {
             id:c.classifier_id,
             name:c.name
           };
         });
-
-        console.log(resp);
         res.json(resp);
       }
     });

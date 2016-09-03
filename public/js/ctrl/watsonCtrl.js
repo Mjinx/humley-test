@@ -7,7 +7,6 @@
         $scope.message = "choose a classifier..";
 
         var onRepo = function(data){
-            console.log(data);
             $scope.message = data.answer;
             $scope.repo = data;  
         };
