@@ -10,14 +10,24 @@
 
   <body ng-controller="watsonCtrl" ng-cloak>
     <h2 class="title">Moe's interview bot</h2>
-    <div class="well">
-      <form name="askWatson">
-        <input type="search" required placeholder="Ask Watson a question" ng-model="question">
-        <input type="submit" value="Ask..." ng-disabled="askWatson.$invalid" ng-click="ask(question)">
-        <input type="button" value="Check Watson" ng-click="checkStatus()">
-      </form>
-      <pre>{{message|json}}</pre>
-    </div>
+    <form name="askWatson">
+      <div class="well">
+        <div>
+          <select ng-options="option.id as option.name for option in classifiers" 
+                  ng-model="classifier" required>
+            <option ng-selected="true" value="">Select a classifier</option>
+          </select>
+          <input type="button" value="Check Watson" ng-disabled="!classifier" ng-click="checkStatus()">
+        </div>
+        </br>
+        <div>
+          <input type="search" required placeholder="Ask Watson a question" ng-model="question">
+          <input type="submit" value="Ask..." ng-disabled="askWatson.$invalid" ng-click="ask(question)">
+        </div>
+        <pre>{{message|json}}</pre>
+      </div>
+    </form>
+
   </body>
 
   <script src="scripts/angular/angular.js"></script>

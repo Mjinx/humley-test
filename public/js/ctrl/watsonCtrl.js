@@ -4,11 +4,10 @@
     var module = angular.module("humleyTest");
 
     var WatsonCtrl = function($scope, watsonAPI) {
-        $scope.message = "ask me anything.";
-
-
+        $scope.message = "choose a classifier..";
 
         var onRepo = function(data){
+            console.log(data);
             $scope.message = data.answer;
             $scope.repo = data;  
         };
@@ -22,17 +21,24 @@
             $scope.message = "Asking...";
             $scope.repo = null;
 
-            watsonAPI.askQuestion(question)
+            watsonAPI.askQuestion($scope.classifier,question)
             .then(onRepo, onError);
         };
 
         $scope.checkStatus = function(){
             $scope.message = "Just checking...";
             $scope.repo = null;
-
-            watsonAPI.checkStatus()
+            
+            watsonAPI.checkStatus($scope.classifier)
             .then(onRepo, onError);
         };
+
+        watsonAPI.classifiers().then(function(data){
+            $scope.message = '';
+            $scope.classifiers = data;  
+        }, onError);
+
+        $scope.classifier = null;
     };
 
     module.controller("watsonCtrl",['$scope', 'watsonAPI', WatsonCtrl]);

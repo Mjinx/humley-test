@@ -4,22 +4,30 @@
     var module = angular.module("humleyTest");
 
     var WatsonAPI = function($http, $log){
-        var checkStatus = function(){
-            return $http.get('/api/status')
+        var classifiers = function(){
+            return $http.get('/api/classifiers')
             .then(function(response){
                 return response.data;
             })
         }
 
-        var askQuestion = function(question){
-            return $http.get('/api/ask/'+question)
+        var checkStatus = function(id){
+            return $http.get('/api/status/'+id)
+            .then(function(response){
+                return response.data;
+            })
+        }
+
+        var askQuestion = function(id,question){
+            return $http.get('/api/ask/'+id+'/'+question)
             .then(function(response){
                 return response.data;
             });
         };
         return {
             askQuestion:askQuestion,
-            checkStatus:checkStatus
+            checkStatus:checkStatus,
+            classifiers:classifiers
         };        
     };
 
